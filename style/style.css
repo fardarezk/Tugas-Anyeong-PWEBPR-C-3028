@@ -1,0 +1,163 @@
+.container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0px 90px 0px;
+}
+
+body{
+    background-image: url("img/bglogin.jpg");
+    background-position: center;
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+}
+
+.flex-direct-row{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.flex-direct-column-left{
+    flex-direction: column;
+    background-color: #7F669D;
+    box-shadow: 0px 5px 20px #8E7AB5;  
+    border-style: none;    
+    color: white;  
+    width: 250px;
+    height: 385px;      
+    margin: 10vh auto 0 auto;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.flex-direct-column-left h1{
+    margin-top: 50px;
+    color: white;
+    margin-left: 70px;
+}
+
+.flex-direct-column-left h3{
+    margin-top: 40px;
+    color: white;
+    margin-left: 45px;
+}
+
+.flex-direct-column-left h4{
+    align-items: center;
+    color: whitesmoke;
+    font-weight: 450;
+    margin-left: 20px;
+}
+
+.flex-direct-column-left button{
+    padding: 5px;
+    width: 140px;
+    color: white;
+    background-color: #7F669D;
+    border-color: white ;
+    border-radius: 30px;
+    margin-left: 60px;
+    margin-top: 50px;
+    font-family: 'Poppins';
+}
+.flex-direct-column-left button a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.flex-direct-column-left button a:hover{
+    color: #7F669D;
+}
+.flex-direct-column-left button:hover{
+    color: #7F669D;
+    background-color: #ffffff;
+}
+
+.flex-direct-column-right{
+    flex-direction: column;
+    background-color: #ffffff; 
+    box-shadow: 0px 5px 20px #8E7AB5;    
+    border-style: none;      
+    width: 350px;
+    height: 385px;      
+    margin: 10vh auto 0 auto;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.flex-direct-column-right button{
+    padding: 5px;
+    width: 140px;
+    color: white;
+    background-color: #7F669D;
+    border-color: white ;
+    border-radius: 30px;
+    margin-left: 85px;
+    margin-top: 10px;
+    font-family: 'Poppins';
+}
+
+.flex-direct-column-right button:hover{
+    color: #7F669D;
+    background-color: #f5f0f0;
+}
+
+.flex-direct-column-right button a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.flex-direct-column-right button a:hover{
+    color: #7F669D;
+}
+#form{
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 12px;
+    z-index: 1;
+}
+
+#form h1{
+    color: #7F669D;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.input-control{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #C7C8CC;
+}
+
+.input-control input{
+    border: 2px solid #7F669D;
+    display: block;
+    font-size: 12px;
+    padding: 5px;
+    width: 90%;
+}
+
+.input-control input:hover{
+    color: gray;
+}
+.input-control input:focus{
+    outline: 0; 
+}
+
+.input-control.success input{
+    border-color: #87A922;
+}
+
+.input-control.error input{
+    border-color: #D04848;
+}
+
+.input-control .error{
+    color: red;
+    font-size: 9px;
+    height: 13px;
+}

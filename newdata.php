@@ -42,33 +42,75 @@
                 </li>
               </ul>
             </div>
-            <div class="footer-nav">
-              <p>Edo Jijima Copyright © 2024</p>
-            </div>
           </div>
           <div class="main-board">
             <div class="head-board">
                 <h3>Add New Data</h3>
                 <h5>Monday, Dec 23 2023</h5>
             </div>
-            <form id="form" action="/">
+            <?php 
+            include("connect.php");
+
+            function input($data){
+              $data = trim($data);
+              $data = stripslashes($data);
+              $data = htmlspecialchars($data);
+              return $data;
+            }
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+              
+              if(isset($_POST["Seller"]) && isset($_POST["Phone"]) && isset($_POST["Product"]) && isset($_POST["Count"])) {
+                $seller = $_POST["Seller"];
+                $phone = $_POST["Phone"];
+                $product = $_POST["Product"];
+                $count = $_POST["Count"];
+
+                
+                if(!empty($seller) && !empty($phone) && !empty($product) && !empty($count)) {
+              
+                  $query = "insert into anyeong(Seller, Phone, Product, Count) values (?,?,?,?)";
+                  $stmt = $con->prepare($query);
+                  $stmt->bind_param("sisi", $seller,$phone, $product,$count);
+                  $stmt->execute();
+                  $result = $stmt->affected_rows > 0 ? true : false;
+
+                  if ($result){
+                    
+                    header("Location: dashboard.php");
+                    exit(); 
+                  }
+                  else {
+                    echo "Gagal menambahkan data";
+                  }
+                } else {
+                  echo "Harap lengkapi semua input!";
+                }
+              } 
+                else {
+                echo "Ada masalah dengan input yang diterima.";
+              }
+            }
+            ?>
+
+            <form id="form" action="<?php echo $_SERVER["PHP_SELF"];?>" METHOD= "POST">
                 <div class="input-control">
-                    <label for="seller">Seller</label>
-                    <input type="text">
+                    <label for="Seller">Seller</label>
+                    <input type="text" name=Seller>
                 </div>
                 <div class="input-control">
-                    <label for="phone">Phone</label>
-                    <input type="text" >
+                    <label for="Phone">Phone</label>
+                    <input type="text" name=Phone>
                 </div>
                 <div class="input-control">
-                    <label for="product">Product</label>
-                    <input type="text">
+                    <label for="Product">Product</label>
+                    <input type="text" name=Product>
                 </div>
                 <div class="input-control">
-                    <label for="count">Count</label>
-                    <input type="text">
+                    <label for="Count">Count</label>
+                    <input type="text" name=Count>
                 </div>
-                <button id="AddButton" type="submit" value="Signup"><a href="dashboard.php">Add</a></button>
+                <button id="AddButton" name="submit" type="submit" value="Signup">Save</button>
             </form>
           </div>
         </div>

@@ -1,9 +1,15 @@
+<?php
+
+require_once 'cont.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data</title>
+    <title>Newdata</title>
     <link rel="stylesheet" href="style/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,62 +51,31 @@
           </div>
           <div class="main-board">
             <div class="head-board">
-                <h3>Edit Data</h3>
+                <h3>Add New Data</h3>
                 <h5>Monday, Dec 23 2023</h5>
             </div>
-            <?php
-            include("connect.php");
-            function input($data){
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-              }
-            if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                $id = $_GET["No"];
-                $seller = $_POST["Seller"];
-                $phone = $_POST["Phone"];
-                $product = $_POST["Product"];
-                $count = $_POST["Count"];
-                $sql = "UPDATE anyeong SET Seller=?, Phone=?, Product=?, Count=? WHERE No=?";
-                $stmt = mysqli_prepare($con, $sql);
-
-                $sql_select = "SELECT * FROM anyeong WHERE No=?";
-                $stmt_select = mysqli_prepare($con, $sql_select);
-                mysqli_stmt_bind_param($stmt_select, "i", $id);
-                mysqli_stmt_execute($stmt_select);
-                $result = mysqli_stmt_get_result($stmt_select);
-                $data = mysqli_fetch_assoc($result);
-
-                if ($result){
-                    header("Location: dashboard.php");
-                    exit(); 
-                }
-                else {
-                    echo "Gagal mengupdate data";
-                }
-            }
-            ?>
-            <form id="form" action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST">
+            <form id="form" action="cont.php" method="post" enctype="multipart/form-data">
                 <div class="input-control">
-                    <label for="seller">Seller</label>
+                    <label for="Seller">Seller</label>
                     <input type="text" name=Seller>
                 </div>
                 <div class="input-control">
-                    <label for="phone">Phone</label>
+                    <label for="Phone">Phone</label>
                     <input type="text" name=Phone>
                 </div>
                 <div class="input-control">
-                    <label for="product">Product</label>
+                    <label for="Product">Product</label>
                     <input type="text" name=Product>
                 </div>
                 <div class="input-control">
-                    <label for="count">Count</label>
+                    <label for="Count">Count</label>
                     <input type="text" name=Count>
                 </div>
-
-                <input type="hidden" name="No" value="<?php echo $data['No']; ?>">
-                <button id="AddButton" type="submit" value="Signup">Save</button>
+                <div class="">
+                <label for="sp" class="">Photo</label>
+                <input class="" type="file" id="sp" name="sp" accept=".img, .jpeg, .png , .jpg" value="submit" require/>
+                </div>
+                <button id="AddButton" name="proses" type="submit" value="submit">Save</button>
             </form>
           </div>
         </div>

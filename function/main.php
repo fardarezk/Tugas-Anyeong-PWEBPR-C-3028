@@ -10,7 +10,7 @@ $httpMethod = $_SERVER['REQUEST_METHOD'];
 $route = $_SERVER['REQUEST_URI'];
 
 // Basis URL
-$baseUrl = '/tugas_individu_going_to_php';
+$baseUrl = '/anyeong';
 
 // Variabel untuk menyimpan parameter rute
 $params = [];
